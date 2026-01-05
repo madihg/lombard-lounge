@@ -729,13 +729,17 @@
                     window.open('embeddings/embeddings.html', '_blank', 
                         `width=${winWidth},height=${winHeight},left=${Math.floor((screenW - winWidth) / 2)},top=${Math.floor((screenH - winHeight) / 2)},resizable=yes`);
                 } else if (this.id === 'button3') {
-                    // Open three URLs in separate windows
+                    // Open three URLs in separate windows with delays to avoid popup blocker
                     window.open('https://weird-web-tales.vercel.app/', '_blank', 
                         `width=${winWidth},height=${winHeight},left=0,top=0,resizable=yes`);
-                    window.open('https://dijiang-site.vercel.app/', '_blank', 
-                        `width=${winWidth},height=${winHeight},left=${Math.floor((screenW - winWidth) / 2)},top=${Math.floor((screenH - winHeight) / 2)},resizable=yes`);
-                    window.open('https://chat.mistral.ai/memories', '_blank', 
-                        `width=${winWidth},height=${winHeight},left=${screenW - winWidth},top=0,resizable=yes`);
+                    setTimeout(() => {
+                        window.open('https://dijiang-site.vercel.app/', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${Math.floor((screenW - winWidth) / 2)},top=${Math.floor((screenH - winHeight) / 2)},resizable=yes`);
+                    }, 100);
+                    setTimeout(() => {
+                        window.open('https://chat.mistral.ai/memories', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${screenW - winWidth},top=0,resizable=yes`);
+                    }, 200);
                 }
             });
         });
