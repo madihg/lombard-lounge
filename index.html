@@ -731,31 +731,35 @@
                     window.open('whomp/whomp.html', '_blank', 
                         `width=${winWidth},height=${winHeight},left=0,top=${Math.floor((screenH - winHeight) / 2)},resizable=yes`);
                 } else if (this.id === 'button2') {
-                    // Open 6 URLs - background windows first (offset), then main window on top
+                    // Open 6 URLs in order: back to front (last opened appears on top)
                     const centerX = Math.floor((screenW - winWidth) / 2);
                     const centerY = Math.floor((screenH - winHeight) / 2);
                     const offset = 40; // Offset for stacked windows
                     
-                    // Open background windows first (they appear behind)
-                    window.open('https://chameleon-shapes.vercel.app/', '_blank', 
-                        `width=${winWidth},height=${winHeight},left=${centerX + offset},top=${centerY + offset},resizable=yes`);
+                    // 6. elo erosion (back)
+                    window.open('https://elo-2025.vercel.app/erosion.html', '_blank', 
+                        `width=${winWidth},height=${winHeight},left=${centerX + offset * 5},top=${centerY + offset},resizable=yes`);
+                    // 5. borderline 3d-reach
                     setTimeout(() => {
-                        window.open('https://borderline-swart.vercel.app/2a-solo-border.html', '_blank', 
-                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 2},top=${centerY + offset},resizable=yes`);
+                        window.open('https://borderline-swart.vercel.app/3d-reach.html', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 4},top=${centerY + offset},resizable=yes`);
                     }, 50);
+                    // 4. borderline 3b-exhibit-1-impossible
                     setTimeout(() => {
                         window.open('https://borderline-swart.vercel.app/3b-exhibit-1-impossible.html', '_blank', 
                             `width=${winWidth},height=${winHeight},left=${centerX + offset * 3},top=${centerY + offset},resizable=yes`);
                     }, 100);
+                    // 3. borderline 2a-solo-border
                     setTimeout(() => {
-                        window.open('https://borderline-swart.vercel.app/3d-reach.html', '_blank', 
-                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 4},top=${centerY + offset},resizable=yes`);
+                        window.open('https://borderline-swart.vercel.app/2a-solo-border.html', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 2},top=${centerY + offset},resizable=yes`);
                     }, 150);
+                    // 2. chameleon-shapes
                     setTimeout(() => {
-                        window.open('https://elo-2025.vercel.app/erosion.html', '_blank', 
-                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 5},top=${centerY + offset},resizable=yes`);
+                        window.open('https://chameleon-shapes.vercel.app/', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX + offset},top=${centerY + offset},resizable=yes`);
                     }, 200);
-                    // Open main window last so it appears on top
+                    // 1. journey-maps (front/top)
                     setTimeout(() => {
                         window.open('https://journey-maps.vercel.app/', '_blank', 
                             `width=${winWidth},height=${winHeight},left=${centerX},top=${centerY},resizable=yes`);
