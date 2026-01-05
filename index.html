@@ -486,12 +486,18 @@
                     const screenH = window.screen.height;
                     const winWidth = 800; // Large width
                     const winHeight = 600; // Large height
-                    const left = Math.floor((screenW - winWidth) / 2); // Center horizontally
-                    const top = Math.floor((screenH - winHeight) / 2); // Center vertically
+                    const centerX = Math.floor((screenW - winWidth) / 2);
+                    const centerY = Math.floor((screenH - winHeight) / 2);
+                    const offset = 40; // Offset for stacked window
                     
-                    // Open psy-grey.html in a centered window
-                    window.open('psy-grey/psy-grey.html', '_blank', 
-                        `width=${winWidth},height=${winHeight},left=${left},top=${top},resizable=yes`);
+                    // Open background window first (offset to peek behind)
+                    window.open('https://oulipo.vercel.app/we-called-us-poetry.html', '_blank', 
+                        `width=${winWidth},height=${winHeight},left=${centerX + offset},top=${centerY + offset},resizable=yes`);
+                    // Open main window last so it appears on top
+                    setTimeout(() => {
+                        window.open('https://weirder-ai.vercel.app/psy-grey/psy-grey.html', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX},top=${centerY},resizable=yes`);
+                    }, 100);
                 });
                 
                 setTimeout(() => {
@@ -725,9 +731,35 @@
                     window.open('whomp/whomp.html', '_blank', 
                         `width=${winWidth},height=${winHeight},left=0,top=${Math.floor((screenH - winHeight) / 2)},resizable=yes`);
                 } else if (this.id === 'button2') {
-                    // Open embeddings.html in the middle
-                    window.open('embeddings/embeddings.html', '_blank', 
-                        `width=${winWidth},height=${winHeight},left=${Math.floor((screenW - winWidth) / 2)},top=${Math.floor((screenH - winHeight) / 2)},resizable=yes`);
+                    // Open 6 URLs - background windows first (offset), then main window on top
+                    const centerX = Math.floor((screenW - winWidth) / 2);
+                    const centerY = Math.floor((screenH - winHeight) / 2);
+                    const offset = 40; // Offset for stacked windows
+                    
+                    // Open background windows first (they appear behind)
+                    window.open('https://chameleon-shapes.vercel.app/', '_blank', 
+                        `width=${winWidth},height=${winHeight},left=${centerX + offset},top=${centerY + offset},resizable=yes`);
+                    setTimeout(() => {
+                        window.open('https://borderline-swart.vercel.app/2a-solo-border.html', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 2},top=${centerY + offset},resizable=yes`);
+                    }, 50);
+                    setTimeout(() => {
+                        window.open('https://borderline-swart.vercel.app/3b-exhibit-1-impossible.html', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 3},top=${centerY + offset},resizable=yes`);
+                    }, 100);
+                    setTimeout(() => {
+                        window.open('https://borderline-swart.vercel.app/3d-reach.html', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 4},top=${centerY + offset},resizable=yes`);
+                    }, 150);
+                    setTimeout(() => {
+                        window.open('https://elo-2025.vercel.app/erosion.html', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX + offset * 5},top=${centerY + offset},resizable=yes`);
+                    }, 200);
+                    // Open main window last so it appears on top
+                    setTimeout(() => {
+                        window.open('https://journey-maps.vercel.app/', '_blank', 
+                            `width=${winWidth},height=${winHeight},left=${centerX},top=${centerY},resizable=yes`);
+                    }, 250);
                 } else if (this.id === 'button3') {
                     // Open three URLs in separate windows with delays to avoid popup blocker
                     window.open('https://weird-web-tales.vercel.app/', '_blank', 
