@@ -624,12 +624,10 @@
                 // Remove visual dragging state
                 activeDragElement.classList.remove('dragging');
                 
-                // Check if we dropped rectangle3 and rectangles overlap perfectly
-                if (activeDragElement.id === 'rectangle3' && !mergeExecuted) {
-                    if (checkPerfectOverlap()) {
-                        mergeExecuted = true;
-                        mergeRectangles();
-                    }
+                // Check if rectangles overlap perfectly (works with any rectangle)
+                if (!mergeExecuted && checkPerfectOverlap()) {
+                    mergeExecuted = true;
+                    mergeRectangles();
                 }
                 
                 // Reset drag state
@@ -693,12 +691,10 @@
             if (isDragging && activeDragElement) {
                 activeDragElement.classList.remove('dragging');
                 
-                // Check if we dropped rectangle3 and rectangles overlap perfectly
-                if (activeDragElement.id === 'rectangle3' && !mergeExecuted) {
-                    if (checkPerfectOverlap()) {
-                        mergeExecuted = true;
-                        mergeRectangles();
-                    }
+                // Check if rectangles overlap perfectly (works with any rectangle)
+                if (!mergeExecuted && checkPerfectOverlap()) {
+                    mergeExecuted = true;
+                    mergeRectangles();
                 }
                 
                 // Reset drag state
